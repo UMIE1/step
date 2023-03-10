@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+void game()
+{
+	int num = 0;
+	int guss = 0;
+	num = rand() % 100 + 1;//产生 0-100的随机数
+	while (1)
+	{
+
+		printf("GAME START!\n请输入你要猜的数字：");
+		scanf("%d", &guss);
+		if (guss < num)
+		{
+			printf("猜小了！");
+		}
+		else if (guss > num)
+		{
+			printf("猜大了！");
+		}
+		else
+		{
+			printf("猜对了");
+			break;
+		}
+
+	}
+}
+int main()
+{
+	srand((unsigned int)time(NULL));//根据时间产生随机数
+	printf("猜数字0-100\n1 开始游戏\n2 退出游戏\n");
+	int sec = 0;
+	scanf("%d", & sec);
+	switch (sec)
+	{
+	case 1:
+		game();
+		break;
+	}
+	return 0;
+}
