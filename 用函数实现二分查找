@@ -1,0 +1,44 @@
+//函数的二分查找
+int binary_search(int arr[],int seek,int len)
+{
+	//不能在函数的内部求数组的长度，函数拷贝的是数组中第一个元素的地址，求得的len是1.
+	int left = 0;
+	int right = len - 1;
+	while (left <= right)
+	{
+		int mid = (left + right) / 2;
+		if (arr[mid] < seek)
+		{
+			left=mid + 1;
+		}
+		else if (arr[mid] > seek)
+		{
+			right=mid - 1;
+		}
+		else
+		{
+			return mid;
+			break;
+		}
+	}
+	return -1;
+}
+int main()
+{
+	int arr[] = { 0,1,2,3,4,5,6,7,8,9,10 };
+	int len = sizeof(arr) / sizeof(arr[1]);
+	printf("请输入你要查找的值：");
+	int seek = 7;
+	scanf("%d", &seek);
+	int ret = binary_search(arr,seek,len);
+	//找到了这个数  返回这个数的下标，找不到返回-1；
+	if (ret == -1)
+	{
+		printf("未找到这个数字！");
+	}
+	else
+	{
+		printf("这个数字的下标是%d", ret);
+	}
+	return 0;
+}
