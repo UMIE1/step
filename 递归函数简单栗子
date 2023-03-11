@@ -1,0 +1,17 @@
+int digui(int n)
+{
+	if (n > 9)
+	{
+		digui(n/10);        //重复调用digui函数，来消掉数的后一位。
+	}
+	printf("%d\n", n % 10);
+}
+int main()
+{
+	int num = 0;
+	printf("递归的演示，输入一个数，依次打印这个数");
+	scanf("%d", &num);
+	digui(num);
+	return 0;
+
+}
