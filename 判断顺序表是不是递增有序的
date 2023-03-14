@@ -1,0 +1,60 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#define MAX 100
+struct List
+{
+	int arr[MAX];
+	int length;
+}l;
+int Find_sort(struct List *l)
+{
+	if (l->length == 0)
+	{
+		return 0;
+	}
+	int i = 0;
+	int flag = 1;
+	for (i = 0; i < l->length; i++)
+	{
+		
+		if (l->arr[i] > l->arr[i + 1])
+		{
+			flag = 0;
+		}
+	}
+	if (flag == 1)
+	{
+		return 1;
+	}
+	else
+	{
+		return -1;
+	}
+}
+int main()
+{
+	struct List l;
+	int i = 0;
+	for (i = 1; i < 10; i++)
+	{
+		int num;
+		scanf("%d", &num);
+		l.arr[i] = num;
+	}
+	int len = sizeof(l.arr) / sizeof(l.arr[1]);
+	l.length = len;
+	int ret = Find_sort(&l);
+	if (ret == 0)
+	{
+		printf("这是一个空表！\n");
+	}
+	else if (ret == -1)
+	{
+		printf("这个顺序表不是递增有序的。\n");
+	}
+	else
+	{
+		printf("这个顺序表是递增有序的。\n");
+	}
+	return 0;
+}
